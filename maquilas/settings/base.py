@@ -54,10 +54,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'maquilas.urls'
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',        
-        'DIRS': ['C:/Users/uzzie/Desktop/proyecto-D3/maquilas/agama/templates'],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', 
+        'DIRS': [BASE_DIR / 'agama' / 'templates'],       
+        #'DIRS': ['C:/Users/uzzie/Desktop/proyecto-D3/maquilas/agama/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
