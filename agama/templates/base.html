@@ -12,20 +12,14 @@
 	<body style="background-color: rgb(240, 243, 243);">	
 		<header style="position: fixed;top: 0;width: 100%;">
 			
-			<div style="background-color: rgb(212, 41, 84);align-items:center;display:flex;justify-content:left;">
-
-				<div class="col-2"  style="background-color: white;align-items:center;display:flex;justify-content:center;">
-
-					<div style="background-color: white;align-items:center;display:flex;justify-content:center;">
-						<img src="{% static 'agama/logo.jpg' %}" alt="Descripción de la imagen" style="max-width: 50%; max-height: 20%;">
-					</div>
-  
-				</div>
+			<div style="background-color: rgba(212, 41, 84, 0.021);align-items:center">
 
 				
-				<div class="col-10"  style="background-color: rgb(212, 41, 84);align-items:center;display:flex;justify-content:center;">
+
+				
+				<div class="col-12"  style="background-color: rgb(212, 41, 84);align-items:center;display:flex;justify-content:center">
 					
-						<h1>EMBARQUES-MAQUILA</h1>
+						<h1>REGISTRO DE EMBARQUES</h1>
 					
 					
 				</div>
@@ -33,18 +27,29 @@
 			</div>
 				
 			
-		</header>		
+		</header>	
+		<div class="col-12" style="background-color: rgb(240, 243, 243);display:flex">	
 		
-			<div class="col-2" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
+			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
-					<li><a href="#">Registro de carga</a></li>
-					<li><a href="#"></a>Cargas</li>
-					<li><a href="#"></a>Maquilas</li>
+					<li style="list-style-type: none;"><a href="#" ><h1 style="color: #f6f6f8;">REGISTRAR CARGA</h1></a></li>
+					<li style="list-style-type: none;"><a href="#" ><h2 style="color: #f6f6f8;">CARGA</h2></a></li>
+					<li style="list-style-type: none;"><a href="#" ><h3 style="color: #f6f6f8;">CARGA</h3></a></li>
 				</ul>
 				
 
 					
-			</div>  
+			</div> 
+			<div class="col-9"  style="background-color: rgb(240, 243, 243);align-items:center;display:flex;justify-content:center;  height: 100vh;" >
+
+				<div class="col-12" style="background-color: rgb(19, 65, 38);align-items:center;display:flex;justify-content:center;  height: 20vh;">
+
+					<img src="{% static 'agama/agalogo.jpg' %}" alt="Descripción de la imagen" style="max-width: 200%; max-height: 100%; object-fit: cover;" >
+
+				</div>				
+
+			</div> 
+		</div>
 						
 	</body>
 </html>
