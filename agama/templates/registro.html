@@ -13,208 +13,216 @@
 	<body style="background-color: rgb(240, 243, 243);">	
 		
 		<div class="col-12" style="background-color: rgb(240, 243, 243);display:flex">	
+
             
 		
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
-					<li style="list-style-type: none;"><a href="#" ><h1 style="color: #f6f6f8;">REGISTRAR CARGA</h1></a></li>
+					<li style="list-style-type: none;"><a href=" " ><h1 style="color: #f6f6f8;">CARGA</h1></a></li>
 					<li style="list-style-type: none;"><a href="#" ><h2 style="color: #f6f6f8;">CARGA</h2></a></li>
 					<li style="list-style-type: none;"><a href="#" ><h3 style="color: #f6f6f8;">CARGA</h3></a></li>
-				</ul>
-				
-
-					
+				</ul>					
 			</div> 
 
 
            
 			<div class="col-9"  style="background-color: rgb(240, 243, 243);align-items:center;display:flex;justify-content:center;  height: 100vh;" >
-              
-                
-                
 
-                <div style="align-items:center;display:flex;justify-content:center;margin-top: 100px;">
 
-                     
-
-                    <div class="col-10">                       
+                <div class="col-11">   
+                    <br>
+                    <br>                           
+                    <br>
+                    <br>
+                    <br>
+                    <br>                            
                         
-                        <form action="" class="formulario_contacto" method="POST" enctype="multipart/form-data"> 
-                            <br>
-                            <br>                           
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="col-12"  style="background-color: rgb(212, 41, 84);align-items:center;display:flex;justify-content:center;">                               	
-                                <hi>REGISTRAR CARGA</hi>				
+                    <form action="" class="formulario_contacto" method="POST" enctype="multipart/form-data"> 
+                        <br>
+                        <br>                           
+                        <br>
+                        <br>
+                        <br>
+                        <br>                         
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        
+                        <div class="col-12"  style="background-color: rgb(240, 23, 77);align-items:center;display:flex;justify-content:center;">                               	
+                            <hi>REGISTRO DE CARGA</hi>				
+                        </div>
+                        <br>
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">                               	
+                            <hi>DATOS DEL CLIENTE</hi>				
+                        </div>
+                        <br>
+                        <div class="col-12">
+                                            
+                            <div>{% csrf_token %}{{ form.nombre_cliente.label }}</div>
+                            <div>{% csrf_token %}{{ form.nombre_cliente }}</div>
+                            <div>{% csrf_token %}{{ form.direccion_fiscal.label }}</div>
+                            <div>{% csrf_token %}{{ form.direccion_fiscal }}</div>
+                            <div>{% csrf_token %}{{ form.contacto_dir.label }}</div>
+                            <div>{% csrf_token %}{{ form.contacto_dir }}</div>
+                            <br>					
+                                    
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
+                            <hi>DATOS DEL TRASNPORTE</hi>											
+                        </div>
+                        <br>
+                        <div>
+                            <div style="align-items:center;display:flex;justify-content:center;">
+                                
+                                <div class="col-6" style="justify-content:left;">
+                                    
+                                    <div>{% csrf_token %}{{ form.empresa_transportadora.label }}</div>
+                                    <div>{% csrf_token %}{{ form.empresa_transportadora }}</div>
+                                    <div>{% csrf_token %}{{ form.nombre_transportista.label }}</div>
+                                    <div>{% csrf_token %}{{ form.nombre_transportista }}</div>
+                                    <div>{% csrf_token %}{{ form.licencia.label }}</div>
+                                    <div>{% csrf_token %}{{ form.licencia }}</div>				
+                                    <div>{% csrf_token %}{{ form.certificado_fumigacion.label }}</div>
+                                    <div>{% csrf_token %}{{ form.certificado_fumigacion }}</div>				
+                                    
+                                </div>
+                
+                                <div class="col-6" style="justify-content:center;">
+                                            
+                                    <div>{% csrf_token %}{{ form.tracto_camion.label }}</div>
+                                    <div>{% csrf_token %}{{ form.tracto_camion }}</div>
+                                    <div>{% csrf_token %}{{ form.placas_unidad.label }}</div>
+                                    <div>{% csrf_token %}{{ form.placas_unidad }}</div>
+                                    <div>{% csrf_token %}{{ form.placas_caja.label }}</div>
+                                    <div>{% csrf_token %}{{ form.placas_caja }}</div>				
+                                    <div>{{ form.numero_caja.label }}</div>
+                                    <div>{% csrf_token %}{{ form.numero_caja}}</div>		
+                                </div>						
                             </div>
-
-
-
-                                          
-                            
-        
-                           
                             <br>
-                            <br>
-                            
-                            <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">                               	
-                                <hi>DATOS DEL CLIENTE</hi>				
+                        </div>
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
+                            <hi>PRODUCTO ENTREGADO</hi>											
+                        </div>
+                        <br>
+                        <div>
+                            <div style="align-items:center;display:flex;justify-content:center;">
+                                
+                                <div class="col-6" style="justify-content:left;">
+                                                    
+                                    <div>{% csrf_token %}{{ form.producto.label }}</div>
+                                    <div>{% csrf_token %}{{ form.producto }}</div>
+                                    <div>{% csrf_token %}{{ form.cantidad_charolas.label }}</div>
+                                    <div>{% csrf_token %}{{ form.cantidad_charolas }}</div>
+                                </div>
+                
+                                <div class="col-6" style="justify-content:center;">
+                                                    
+                                    <div>{% csrf_token %}{{ form.numero_lote.label }}</div>
+                                    <div>{% csrf_token %}{{ form.numero_lote }}</div>
+                                    <div>{% csrf_token %}{{ form.cantidad_tarimas.label }}</div>
+                                    <div>{% csrf_token %}{{ form.cantidad_tarimas }}</div>
+                                </div>
+                                
                             </div>
                             <br>
-                            <div class="col-12">
-                                                
-                                <div>{% csrf_token %}{{ form.nombre_cliente.label }}</div>
-                                <div>{% csrf_token %}{{ form.nombre_cliente }}</div>
-                                <div>{% csrf_token %}{{ form.direccion_fiscal.label }}</div>
-                                <div>{% csrf_token %}{{ form.direccion_fiscal }}</div>
-                                <div>{% csrf_token %}{{ form.contacto_dir.label }}</div>
-                                <div>{% csrf_token %}{{ form.contacto_dir }}</div>
-                                <br>					
-                                        
-                            <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
-                                <hi>DATOS DEL TRASNPORTE</hi>											
-                            </div>
-                            <br>
+                        </div> 
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
+                            <hi>CONDICIONES VISUALES DE LA UNIDAD</hi>											
+                        </div>
+                        <br>
+                        <div class="col-12" style="align-items:center;display:flex;justify-content: space-between;" >	
+                                            
                             <div>
-                                <div style="align-items:center;display:flex;justify-content:center;">
-                                    
-                                    <div class="col-6" style="justify-content:left;">
-                                        
-                                        <div>{% csrf_token %}{{ form.empresa_transportadora.label }}</div>
-                                        <div>{% csrf_token %}{{ form.empresa_transportadora }}</div>
-                                        <div>{% csrf_token %}{{ form.nombre_transportista.label }}</div>
-                                        <div>{% csrf_token %}{{ form.nombre_transportista }}</div>
-                                        <div>{% csrf_token %}{{ form.licencia.label }}</div>
-                                        <div>{% csrf_token %}{{ form.licencia }}</div>				
-                                        <div>{% csrf_token %}{{ form.certificado_fumigacion.label }}</div>
-                                        <div>{% csrf_token %}{{ form.certificado_fumigacion }}</div>				
-                                        
-                                    </div>
-        
-                                    <div class="col-6" style="justify-content:center;">
-                                                
-                                        <div>{% csrf_token %}{{ form.tracto_camion.label }}</div>
-                                        <div>{% csrf_token %}{{ form.tracto_camion }}</div>
-                                        <div>{% csrf_token %}{{ form.placas_unidad.label }}</div>
-                                        <div>{% csrf_token %}{{ form.placas_unidad }}</div>
-                                        <div>{% csrf_token %}{{ form.placas_caja.label }}</div>
-                                        <div>{% csrf_token %}{{ form.placas_caja }}</div>				
-                                        <div>{{ form.numero_caja.label }}</div>
-                                        <div>{% csrf_token %}{{ form.numero_caja}}</div>		
-                                    </div>						
-                                </div>
-                                <br>
+                                <div>{% csrf_token %}{{ form.visual_paredes.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_paredes }}</div>
                             </div>
-                            <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
-                                <hi>PRODUCTO ENTREGADO</hi>											
-                            </div>
-                            <br>
                             <div>
-                                <div style="align-items:center;display:flex;justify-content:center;">
-                                    
-                                    <div class="col-6" style="justify-content:left;">
-                                                        
-                                        <div>{% csrf_token %}{{ form.producto.label }}</div>
-                                        <div>{% csrf_token %}{{ form.producto }}</div>
-                                        <div>{% csrf_token %}{{ form.cantidad_charolas.label }}</div>
-                                        <div>{% csrf_token %}{{ form.cantidad_charolas }}</div>
-                                    </div>
-        
-                                    <div class="col-6" style="justify-content:center;">
-                                                        
-                                        <div>{% csrf_token %}{{ form.numero_lote.label }}</div>
-                                        <div>{% csrf_token %}{{ form.numero_lote }}</div>
-                                        <div>{% csrf_token %}{{ form.cantidad_tarimas.label }}</div>
-                                        <div>{% csrf_token %}{{ form.cantidad_tarimas }}</div>
-                                    </div>
-                                    
-                                </div>
-                                <br>
-                            </div> 
-                            <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
-                                <hi>CONDICIONES VISUALES DE LA UNIDAD</hi>											
-                            </div>
-                            <br>
-                            <div class="col-12" style="align-items:center;display:flex;justify-content: space-between;" >	
-                                                
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_paredes.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_paredes }}</div>
-                                </div>
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_piso.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_piso }}</div>
-                                </div>	
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_techo.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_techo }}</div>	
-        
-                                </div>																	
-                            </div>
-                            <br>
-                            <div style="align-items:center;display:flex;justify-content: space-between;">
-        
-                                <div>{% csrf_token %}{{ form.hora_llegada.label }}</div>							
-                                <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
-        
-                            </div>
-                            <div style="align-items:center;display:flex;justify-content: space-between;">
-                                
-                                
-                                <div>{% csrf_token %}{{ form.hora_llegada }}</div>					
-                                <div>{% csrf_token %}{{ form.hora_salida }}</div>
-        
-                            </div>
-                            <br>			
-                            <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
-                                <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
-                            </div>
-                            <br>
-                            <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">							
+                                <div>{% csrf_token %}{{ form.visual_piso.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_piso }}</div>
+                            </div>	
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_techo.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_techo }}</div>	
+                
+                            </div>																	
+                        </div>
+                        <br>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                
+                            <div>{% csrf_token %}{{ form.hora_llegada.label }}</div>							
+                            <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
+                
+                        </div>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
                             
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_tarima1.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_tarima1 }}</div>
-                                </div>	
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_mitad_carga.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_mitad_carga }}</div>
-                                </div>
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_fin_carga.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>	
-                                </div>
-                                <div>
-                                    <div>{% csrf_token %}{{ form.visual_cerrado_unidad.label }}</div>
-                                    <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>	
-                                </div>													
+                            
+                            <div>{% csrf_token %}{{ form.hora_llegada }}</div>					
+                            <div>{% csrf_token %}{{ form.hora_salida }}</div>
+                
+                        </div>
+                        <br>			
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
+                            <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
+                        </div>
+                        <br>
+                        <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">							
+                        
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_tarima1.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_tarima1 }}</div>
+                            </div>	
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_mitad_carga.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_mitad_carga }}</div>
                             </div>
-                            <br>
-                            <div style="align-items:center;display:flex;justify-content: space-between;">
-        
-                                <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>							
-                                <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
-        
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_fin_carga.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>	
                             </div>
-                            <div style="align-items:center;display:flex;justify-content: space-between;">
-                                
-                                
-                                <div>{% csrf_token %}{{ form.hora_inicio_carga }}</div>					
-                                <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>
-        
-                            </div>								
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>	
+                            </div>													
+                        </div>
+                        <br>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>							
+                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
+                
+                        </div>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                            
+                            
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga }}</div>					
+                            <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>
+                
+                        </div>								
                         </div>
                         <br>
                         <div style="align-items:center;display:flex;justify-content:center;">
                             <button type="submit" id="btnEnviar" class="btn btn-primary">Guardar</button>
                         </div>
-                        </form>	
-                        {{mensaje}}
-                        
-        
-                    </div>
+                    </form>	
+                    {{mensaje}}
+                    
+                
+                </div>
+                
+                
+
+              
+                
+                
+
+                
+
+                     
+
+                   
+
 
 						
 
@@ -223,3 +231,12 @@
 						
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
