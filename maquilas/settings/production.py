@@ -9,7 +9,7 @@ from .base import *
 DEBUG = True
 
 ALLOWED_HOSTS = ["agamaquila-production.up.railway.app"]
-CSRF_TRUSTED_ORIGINS = ["agamaquila-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://agamaquila-production.up.railway.app"]
 
 
 
