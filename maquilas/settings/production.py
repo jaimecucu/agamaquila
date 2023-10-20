@@ -9,6 +9,7 @@ from .base import *
 DEBUG = True
 
 ALLOWED_HOSTS = ["agamaquila-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["agamaquila-production.up.railway.app"]
 
 
 
@@ -44,5 +45,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 
