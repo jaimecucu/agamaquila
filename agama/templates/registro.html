@@ -18,7 +18,7 @@
 		
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
-					<li style="list-style-type: none;"><a href=" " ><h1 style="color: #f6f6f8;">CARGA</h1></a></li>
+					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}"><h1 style="color: #f6f6f8;">INICIO</h1></a></li>
 					<li style="list-style-type: none;"><a href="#" ><h2 style="color: #f6f6f8;">CARGA</h2></a></li>
 					<li style="list-style-type: none;"><a href="#" ><h3 style="color: #f6f6f8;">CARGA</h3></a></li>
 				</ul>					
@@ -38,6 +38,7 @@
                     <br>                            
                         
                     <form action="" class="formulario_contacto" method="POST" enctype="multipart/form-data"> 
+                                             
                         <br>
                         <br>                           
                         <br>
@@ -137,16 +138,26 @@
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_paredes.label }}</div>
                                 <div>{% csrf_token %}{{ form.visual_paredes }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_paredes.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>
+                                
                             </div>
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_piso.label }}</div>
                                 <div>{% csrf_token %}{{ form.visual_piso }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_piso.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>
                             </div>	
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_techo.label }}</div>
                                 <div>{% csrf_token %}{{ form.visual_techo }}</div>	
-                
-                            </div>																	
+                                <div>
+                                    <img src="../media/{{ form.visual_techo.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>                                
+                            </div>            
+                        																	
                         </div>
                         <br>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
@@ -172,18 +183,30 @@
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_tarima1.label }}</div>
                                 <div>{% csrf_token %}{{ form.visual_tarima1 }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_tarima1.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    
                             </div>	
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_mitad_carga.label }}</div>
                                 <div>{% csrf_token %}{{ form.visual_mitad_carga }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_mitad_carga.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    
                             </div>
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_fin_carga.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>	
+                                <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_fin_carga.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>                                   	
                             </div>
                             <div>
                                 <div>{% csrf_token %}{{ form.visual_cerrado_unidad.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>	
+                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_cerrado_unidad.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    	
                             </div>													
                         </div>
                         <br>

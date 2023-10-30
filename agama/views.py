@@ -1,6 +1,27 @@
-from django.shortcuts import render
+from email import utils
+from io import BytesIO
+from mmap import PAGESIZE
+import reportlab
+from django.shortcuts import render,redirect
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4,letter
+from reportlab.lib import utils
+from  django.templatetags.static import  static
+import subprocess
 from .forms import contenidoForm#,transporteForm,transporte1Form,productoForm,producto1Form,visualForm,visual1Form,visual_productoForm,visual_producto1Form
+from .models import contenido
+from django.conf import settings
+import  os
+from django.contrib.staticfiles import finders
 
+
+
+
+
+
+
+#from django.template.loader import render_to_string
 # Create your views here.
 
 def menuaga(request):  
@@ -11,7 +32,7 @@ def embarque(request):
 
     data = {
         'form':contenidoForm()
-       
+        
     }
 
     if request.method == 'POST':
@@ -25,4 +46,71 @@ def embarque(request):
         else:
             data["form"]=contenido_form
     return render(request,'registro.html',data)
+
+def listarCarga(request):     
+    cargas= contenido.objects.all().order_by('-id')    
+    return render(request,'cargas.html',{'cargas': cargas})
+
+def editarCarga(request,id):
+    
+    edit_carga= contenido.objects.get(id=id)
+    #print(edit_carga)
+    if request.method=='GET':
+
+        contenido_form =contenidoForm(instance= edit_carga) 
+        #print(contenido_form)       
+    else:
+        contenido_form=contenidoForm(request.POST,request.FILES,instance=edit_carga)
+        if contenido_form.is_valid():
+            contenido_form.save()
+        return redirect('listarCarga')
+    return render(request,'registro.html',{'form':contenido_form})
+
+
+
+
+def exportar_cargas_pdf(request,id):
+    cargas = contenido.objects.get(id=id)
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = "attachment; filename=cargas.pdf"
+    buffer=BytesIO()
+    c = canvas.Canvas(buffer,pagesize= A4)
+    #Header 
+    c.setLineWidth(.3)
+    c.setFont('Helvetica',22)
+
+    logo = finders.find('agama/logo.jpg')
+    if logo:
+        c.drawImage(logo, 10, 750, width=100, height=80) 
+    c.rect(10, 750, width=100, height=80)
+    
+
+    c.setFont('Helvetica',8)    
+    c.drawString(150, 795, "Departamento: Control de Calidad")
+    c.rect(150, 790, width=250, height=10)
+
+    c.setFont('Helvetica-Bold',10)    
+    c.drawString(150, 780, "Inspeccion y liberacion de entrega de producto de maquila")
+    c.rect(150, 775, width=250, height=10)
+   
+   
+    
+    c.setFont('Helvetica-Bold',8)
+    c.drawString(480, 795, "E-F-CC-AC-03")
+
+    
+    c.drawString(480, 780, "Revision 01")
+
+    
+    c.drawString(480, 765, "30-sep-17")
+
+    
+    c.drawString(480, 750, "Pagina 2,4") 
+    
+   
+    c.save()
+    pdf=buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
 
