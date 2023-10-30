@@ -87,25 +87,30 @@ def exportar_cargas_pdf(request,id):
 
     c.setFont('Helvetica',8)    
     c.drawString(150, 795, "Departamento: Control de Calidad")
-    c.rect(150, 790, width=250, height=10)
+    #c.rect(150, 790, width=250, height=10)
 
     c.setFont('Helvetica-Bold',10)    
     c.drawString(150, 780, "Inspeccion y liberacion de entrega de producto de maquila")
-    c.rect(150, 775, width=250, height=10)
+    #c.rect(150, 775, width=250, height=10)
    
    
     
     c.setFont('Helvetica-Bold',8)
-    c.drawString(480, 795, "E-F-CC-AC-03")
+    c.drawString(480, 795, "D-K-LL-AC-12")
 
     
     c.drawString(480, 780, "Revision 01")
 
     
-    c.drawString(480, 765, "30-sep-17")
+    c.drawString(480, 765, "18-OCT-21")
 
     
-    c.drawString(480, 750, "Pagina 2,4") 
+    c.drawString(480, 750, "Pagina 1-1") 
+
+    c.drawString(30, 700, "Cliente:"+cargas.nombre_cliente)
+    c.drawString(30, 680, "Imagen paredes")
+    c.drawImage(cargas.visual_paredes.path, 30, 570, width=100, height=100)
+    
     
    
     c.save()
