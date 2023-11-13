@@ -1,0 +1,109 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+				
+		<title>Inicio</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+       
+	</head>
+	
+	<body style="background-color: rgb(240, 243, 243);">	
+		
+		<div class="col-12" style="background-color: rgb(240, 243, 243);display:flex">	
+
+            
+		
+			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
+				<ul>
+					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}"><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
+					<li style="list-style-type: none;"><a href="/registro/" ><h3 style="color: #f6f6f8;">REGISTRAR CARGA</h3></a></li>
+					<li style="list-style-type: none;"><a href="/cargas/" ><h3 style="color: #f6f6f8;">CARGAS</h3></a></li>
+				</ul>					
+			</div> 
+
+
+           
+			<div class="col-9"  style="background-color: rgb(240, 243, 243);align-items:center;display:flex;justify-content:center;  height: 100vh;" >
+
+
+                <div class="col-11">   
+                    <br>
+                                         
+                        
+                    <form action="" class="formulario_contacto" method="POST" enctype="multipart/form-data"> 
+                        
+                                             
+                        <br>
+                        <br>                           
+                       
+                        
+                        
+                        <div class="col-12"  style="background-color: rgb(240, 23, 77);align-items:center;display:flex;justify-content:center;">                               	
+                            <hi>REGISTRO DE CLIENTE</hi>				
+                        </div>
+                        {% if messages  %}
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                       
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% elif message.tags == 'error' %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endif %}
+                           
+                          
+                        {% endfor %}
+                        
+                          
+                        {% endif %}
+                      
+                       
+                    
+                      
+                        <br>
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">                               	
+                            <hi>DATOS DEL CLIENTE</hi>				
+                        </div>
+                        <br>
+                        <div class="col-12">
+                                            
+                            <div>{% csrf_token %}{{ form.nombre_cliente.label }}</div>
+                            <div>{% csrf_token %}{{ form.nombre_cliente }}</div>
+                            <div>{% csrf_token %}{{ form.direccion_fiscal.label }}</div>
+                            <div>{% csrf_token %}{{ form.direccion_fiscal }}</div>
+                            <div>{% csrf_token %}{{ form.contacto_dir.label }}</div>
+                            <div>{% csrf_token %}{{ form.contacto_dir }}</div>
+                            <br>
+                        </div>                  					
+                                    
+                       
+                        <div style="align-items:center;display:flex;justify-content:center;">
+                            <button type="submit" id="btnEnviar" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>	
+                                   
+                
+                </div>
+			</div> 
+		</div>
+						
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

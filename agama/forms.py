@@ -1,5 +1,7 @@
 from django import forms
-from .models import contenido
+from .models import contenido,cliente
+from django.contrib.admin.widgets import AutocompleteSelect
+from django.contrib import admin
 
 class contenidoForm(forms.ModelForm):
     class Meta:
@@ -45,9 +47,10 @@ class contenidoForm(forms.ModelForm):
             }      
         
         widgets = {
-            'nombre_cliente': forms.TextInput(attrs={'class':'form-control'}),
-            'direccion_fiscal': forms.TextInput(attrs={'class':'form-control'}),
-            'contacto_dir': forms.TextInput(attrs={'class':'form-control'}),
+           
+            'nombre_cliente': forms.TextInput(attrs={'class':'form-control','id':"nombre"}),           
+            'direccion_fiscal': forms.TextInput(attrs={'class':'form-control','id':"direccion"}),
+            'contacto_dir': forms.TextInput(attrs={'class':'form-control','id':"contacto"}),
             #ddddddd
             'empresa_transportadora': forms.TextInput(attrs={'class':'form-control'}),
             'nombre_transportista': forms.TextInput(attrs={'class':'form-control'}),
@@ -81,6 +84,26 @@ class contenidoForm(forms.ModelForm):
             'hora_fin_carga': forms.TextInput(attrs={'class':'form-control'}),
             
         }
+
+class clientesForm(forms.ModelForm):
+    class Meta:
+        model =cliente
+        
+        fields = '__all__' 
+        labels = {
+            'nombre_cliente':'Nombre del cliente:',
+            'direccion_fiscal':'Direccion fiscal:',
+            'contacto_dir':'Contacto:',
+        }
+
+        widgets = {
+            'nombre_cliente': forms.TextInput(attrs={'class':'form-control'}),
+            'direccion_fiscal': forms.TextInput(attrs={'class':'form-control'}),
+            'contacto_dir': forms.TextInput(attrs={'class':'form-control'}),
+        }
+
+            
+           
 
 
 

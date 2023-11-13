@@ -1,12 +1,27 @@
 from django.db import models
+from django.db.models import deletion
 
 # Create your models here.
 
 from datetime import datetime
 
 # Create your models here.
+
+class cliente(models.Model):
+    nombre_cliente = models.CharField('Nombre del cliente',max_length=100, default='')
+    direccion_fiscal = models.CharField('Direccion fiscal',max_length=100, default='')
+    contacto_dir = models.CharField('Contacto',max_length=100, default='')
+    
+
+    class Meta:
+        verbose_name='cliente'
+        verbose_name_plural='clientes'
+
+    def __srt__(self):
+        return self.nombre_cliente 
+
 class contenido(models.Model):   
-     #datos del cliente
+    #datos del cliente
     fecha_registro = models.DateField(auto_now_add=True)
     hora_registro =  models.TimeField(auto_now_add=True) 
     nombre_cliente = models.CharField('Nombre del cliente',max_length=100, default='')
@@ -52,4 +67,5 @@ class contenido(models.Model):
 
     def __srt__(self):
         return self.nombre_cliente 
+    
 

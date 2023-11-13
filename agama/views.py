@@ -9,11 +9,15 @@ from reportlab.lib.pagesizes import A4,letter
 from reportlab.lib import utils
 from  django.templatetags.static import  static
 import subprocess
-from .forms import contenidoForm#,transporteForm,transporte1Form,productoForm,producto1Form,visualForm,visual1Form,visual_productoForm,visual_producto1Form
-from .models import contenido
+from .forms import contenidoForm,clientesForm#,transporteForm,transporte1Form,productoForm,producto1Form,visualForm,visual1Form,visual_productoForm,visual_producto1Form
+from .models import contenido,cliente
 from django.conf import settings
 import  os
 from django.contrib.staticfiles import finders
+from django.contrib import messages
+from django.views.generic import View
+from django.http import JsonResponse
+import json
 
 
 
@@ -26,6 +30,32 @@ from django.contrib.staticfiles import finders
 
 def menuaga(request):  
     return render(request,'base.html')
+
+def registroCliente(request):  
+    data = {
+        'form':clientesForm()
+        
+    }
+
+    if request.method == 'POST':
+        contenido_form=clientesForm(request.POST)
+        nom = request.POST['nombre_cliente']
+
+        #contenido_form=clientesForm(request.POST)
+        comprocliete=cliente.objects.filter(nombre_cliente=nom)
+        if comprocliete:
+             messages.error(request, "El cliente ya existe.")        
+        
+
+        else: #contenido_form.is_valid()
+            contenido_form.save() 
+            messages.success(request, "Operacion exitosa.")           
+        #messages.success(request, "Tu accion fue exitosa.")    
+       
+            
+    return render(request,'registro-cliente.html',data)
+
+
 
 def embarque(request):
    
@@ -43,12 +73,75 @@ def embarque(request):
         if contenido_form.is_valid():
             contenido_form.save()
             data["mensaje"] = "datos guardados"
+            
         else:
             data["form"]=contenido_form
     return render(request,'registro.html',data)
 
+def listarCliente(request):     
+    clientes= cliente.objects.all().order_by('-id')[:5]    
+    return render(request,'clientes-lista.html',{'clientes': clientes})
+
+def consulta_clientes(request):
+    termino = request.GET.get('name', '')
+    
+    # Obtener los cinco últimos clientes ordenados por id
+    clientes = cliente.objects.filter(nombre_cliente__icontains=termino).order_by("-id")[:5]
+    # Crear una lista vacía
+    data = []
+    # Recorrer los clientes y agregarlos a la lista como diccionarios
+    for Cliente in clientes:
+        data.append({
+            "id": Cliente.id,
+            "nombre_cliente": Cliente.nombre_cliente,
+            "direccion_fiscal": Cliente.direccion_fiscal,
+            "contacto_dir": Cliente.contacto_dir
+        })
+    # Devolver los datos en formato JSON
+    return JsonResponse(data, safe=False)
+
+def consulta_cliente(request):
+  # Obtener el id del cliente del parámetro GET
+  id = request.GET.get("id")
+  print(id)
+  # Obtener el cliente de la base de datos
+  Cliente = cliente.objects.get(id=id)
+  # Crear un diccionario con los datos del cliente
+  data = {
+    "nombre_cliente": Cliente.nombre_cliente,
+    "direccion_fiscal": Cliente.direccion_fiscal,
+    "contacto_dir": Cliente.contacto_dir
+  }
+  # Convertir el diccionario a una cadena JSON
+  data_json = json.dumps(data)
+  # Devolver la cadena JSON como respuesta
+  return HttpResponse(data_json, content_type="application/json")
+
+
+
+def editarCliente(request,id):
+    
+    edit_cliente= cliente.objects.get(id=id)
+    #print(edit_carga)
+    if request.method=='GET':
+
+        cliente_form =clientesForm(instance= edit_cliente) 
+        #print(contenido_form)       
+    else:
+        cliente_form=clientesForm(request.POST,instance=edit_cliente)
+        if cliente_form.is_valid():
+            cliente_form.save()
+        return redirect('listarCliente')
+    return render(request,'registro-cliente.html',{'form':cliente_form})
+
+def eliminarCliente(request,id):    
+    eliminar_cliente= cliente.objects.get(id=id)
+    eliminar_cliente.delete()
+    return redirect('listarCliente')
+    
+
 def listarCarga(request):     
-    cargas= contenido.objects.all().order_by('-id')    
+    cargas= contenido.objects.all().order_by('-id')[:5]    
     return render(request,'cargas.html',{'cargas': cargas})
 
 def editarCarga(request,id):
