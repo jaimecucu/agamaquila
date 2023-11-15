@@ -25,6 +25,7 @@ import json
 
 
 
+
 #from django.template.loader import render_to_string
 # Create your views here.
 
@@ -41,8 +42,16 @@ def registroCliente(request):
         contenido_form=clientesForm(request.POST)
         nom = request.POST['nombre_cliente']
 
-        #contenido_form=clientesForm(request.POST)
-        comprocliete=cliente.objects.filter(nombre_cliente=nom)
+        comprocliente = cliente.objects
+        for palabra in nom:
+            comprocliete = comprocliente.filter(nombre_cliente__icontains=palabra)
+            
+
+
+       
+        #comprocliete = cliente.objects.annotate(search=SearchVector('nombre_cliente')).search(nom)
+        #comprocliete = cliente.objects.filter(nombre_cliente__icontains=nom)
+        #comprocliete=cliente.objects.filter(nombre_cliente=nom)
         if comprocliete:
              messages.error(request, "El cliente ya existe.")        
         
