@@ -102,8 +102,7 @@ def consulta_clientes(request):
 
 def consulta_cliente(request):
   # Obtener el id del cliente del parámetro GET
-  id = request.GET.get("id")
-  print(id)
+  id = request.GET.get("id")  
   # Obtener el cliente de la base de datos
   Cliente = cliente.objects.get(id=id)
   # Crear un diccionario con los datos del cliente

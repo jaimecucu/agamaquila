@@ -23,9 +23,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': '0V8JKldAMyfwlF2za62d',
-        'HOST': 'containers-us-west-208.railway.app',
-        'PORT': '7991',
+        'PASSWORD': 'EcD43AAcg6Hd1CC2a4-ACFg2b5Ggcb3H',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '29768',
     }
 }
 
