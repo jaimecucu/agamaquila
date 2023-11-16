@@ -7,8 +7,8 @@ from datetime import datetime
 
 # Create your models here.
 
-class cliente(models.Model):
-    nombre_cliente = models.CharField('Nombre del cliente',max_length=100, default='')
+class cliente(models.Model):    
+    nombre_cliente = models.CharField('Nombre del cliente',max_length=100, unique=True)
     direccion_fiscal = models.CharField('Direccion fiscal',max_length=100, default='')
     contacto_dir = models.CharField('Contacto',max_length=100, default='')
     

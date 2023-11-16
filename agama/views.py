@@ -40,29 +40,23 @@ def registroCliente(request):
 
     if request.method == 'POST':
         contenido_form=clientesForm(request.POST)
-        nom = request.POST['nombre_cliente']
+        nom = request.POST['nombre_cliente']      
 
-        comprocliente = cliente.objects
-        for palabra in nom:
-            comprocliete = comprocliente.filter(nombre_cliente__icontains=palabra)
-            
-
-
-       
-        #comprocliete = cliente.objects.annotate(search=SearchVector('nombre_cliente')).search(nom)
-        #comprocliete = cliente.objects.filter(nombre_cliente__icontains=nom)
-        #comprocliete=cliente.objects.filter(nombre_cliente=nom)
+        comprocliete=cliente.objects.filter(nombre_cliente =nom)     
+    
         if comprocliete:
+             
              messages.error(request, "El cliente ya existe.")        
-        
 
         else: #contenido_form.is_valid()
+            
             contenido_form.save() 
             messages.success(request, "Operacion exitosa.")           
-        #messages.success(request, "Tu accion fue exitosa.")    
-       
+        #messages.success(request, "Tu accion fue exitosa.")       
             
     return render(request,'registro-cliente.html',data)
+
+
 
 
 
