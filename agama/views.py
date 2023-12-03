@@ -25,7 +25,7 @@ from reportlab.lib.units import cm
 #direccion local
 #imagen_media12="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"
 #direccion produccion
-imagen_media12="/media/"
+imagen_media12="/maquilas/maquilas/media/"
 
 
 
