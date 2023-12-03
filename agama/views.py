@@ -86,13 +86,13 @@ def limpiarTabla(request):
     imagen6= contenidos.visual_fin_carga
     imagen7= contenidos.visual_cerrado_unidad
 
-    ruta_imagen1 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen1)
-    ruta_imagen2 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen2)
-    ruta_imagen3 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen3)
-    ruta_imagen4 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen4)
-    ruta_imagen5 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen5)
-    ruta_imagen6 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen6)
-    ruta_imagen7 ="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"+ str(imagen7)
+    ruta_imagen1 =imagen_media12+ str(imagen1)
+    ruta_imagen2 =imagen_media12+ str(imagen2)
+    ruta_imagen3 =imagen_media12+ str(imagen3)
+    ruta_imagen4 =imagen_media12+ str(imagen4)
+    ruta_imagen5 =imagen_media12+ str(imagen5)
+    ruta_imagen6 =imagen_media12+ str(imagen6)
+    ruta_imagen7 =imagen_media12+ str(imagen7)
 
     
     # Lista de archivos a eliminar
