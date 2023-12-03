@@ -20,12 +20,7 @@
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
 					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}"><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
-					<li style="list-style-type: none;"><a href="/registro/" ><h3 style="color: #f6f6f8;">REGISTRAR CARGA</h3></a></li>	
-					<li style="list-style-type: none;"><a href="/registroTar/" ><h3 style="color: #f6f6f8;">REGISTRAR TARIMAS</h3></a></li>					
-					<li style="list-style-type: none;"><a href="/registroClien/" ><h3 style="color: #f6f6f8;">REGISTRAR CLIENTE</h3></a></li>
-					<li style="list-style-type: none;"><a href="/cliente/" ><h3 style="color: #f6f6f8;">LISTA DE CLIENTES</h3></a></li>
-					<li style="list-style-type: none;"><a href="/cargas/" ><h3 style="color: #f6f6f8;">LISTA DE CARGAS</h3></a></li>
-					<li style="list-style-type: none;"><a href="/listarTarima/" ><h3 style="color: #f6f6f8;">LISTA DE TARIMAS</h3></a></li>
+					
 				</ul>					
 			</div> 
 
@@ -47,51 +42,29 @@
                         
                         
                         <div class="col-12"  style="background-color: rgb(240, 23, 77);align-items:center;display:flex;justify-content:center;">                               	
-                            <hi>REGISTRO DE CLIENTE</hi>				
+                            <hi>SALIDAS</hi>				
                         </div>
-                        {% if messages  %}
-                        {% for message in messages %}
-                        {% if message.tags == 'success' %}
-                       
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% elif message.tags == 'error' %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endif %}
-                           
-                          
-                        {% endfor %}
-                        
-                          
-                        {% endif %}
                       
-                       
                     
                       
                         <br>
                         <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">                               	
-                            <hi>DATOS DEL CLIENTE</hi>				
+                            <hi>REGISTRAR SALIDA</hi>				
                         </div>
                         <br>
                         <div class="col-12">
                                             
-                            <div>{% csrf_token %}{{ form.nombre_cliente.label }}</div>
-                            <div>{% csrf_token %}{{ form.nombre_cliente }}</div>
-                            <div>{% csrf_token %}{{ form.direccion_fiscal.label }}</div>
-                            <div>{% csrf_token %}{{ form.direccion_fiscal }}</div>
-                            <div>{% csrf_token %}{{ form.contacto_dir.label }}</div>
-                            <div>{% csrf_token %}{{ form.contacto_dir }}</div>
+                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
+                            <div>{% csrf_token %}{{ form.hora_fin_carga }}</div>
+                            <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
+                            <div>{% csrf_token %}{{ form.hora_salida }}</div>
+                           
                             <br>
                         </div>                  					
                                     
                        
                         <div style="align-items:center;display:flex;justify-content:center;">
-                            <button type="submit" id="btnEnviar" class="btn btn-primary">Guardar</button>
+                            <button type="submit" id="btnEnviar" class="btn btn-primary">TERMINAR REGISTRO</button>
                         </div>
                     </form>	
                                    

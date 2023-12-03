@@ -26,8 +26,8 @@
 		<div class="col-12" style="background-color: rgb(240, 243, 243);display:flex;position: static;top: 0px">
             <div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
                 <ul>
-					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}"><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
 					
+                    <li style="list-style-type: none;"><a href="/registroTar/" ><h3 style="color: #f6f6f8;">REGISTRAR TARIMAS</h3></a></li>
                     
 				</ul>	
 
@@ -43,7 +43,7 @@
                 
 
 
-                <div class="col-11" style="margin-top: 700px;"> 
+                <div class="col-11" style="margin-top: 1300px;"> 
                       
                                                           
                         
@@ -299,7 +299,19 @@
                         																	
                         </div>
                         <br>
-                      
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                
+                            <div>{% csrf_token %}{{ form.hora_llegada.label }}</div>							
+                            <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
+                
+                        </div>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                            
+                            
+                            <div>{% csrf_token %}{{ form.hora_llegada }}</div>					
+                            <div>{% csrf_token %}{{ form.hora_salida }}</div>
+                
+                        </div>
                         <br>			
                         <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
                             <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
@@ -345,21 +357,25 @@
                             </div>
                             <div></div>
                             	
-                        </div>	                       
+                        </div>	
+
+
+
+                        
 
                         	
                         <br>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
-                            
-                            <div>{% csrf_token %}{{ form.hora_llegada.label }}</div>							
-                            <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>
+                
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>							
+                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
                 
                         </div>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
                             
                             
-                            <div>{% csrf_token %}{{ form.hora_llegada }}</div>					
-                            <div>{% csrf_token %}{{ form.hora_inicio_carga}}</div>
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga }}</div>					
+                            <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>
                 
                         </div>								
                         </div>

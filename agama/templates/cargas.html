@@ -18,9 +18,9 @@
 		
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
-					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}" ><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
-					<li style="list-style-type: none;"><a href="/registroClien/" ><h3 style="color: #f6f6f8;">REGISTRAR CLIENTE</h3></a></li>
-          <li style="list-style-type: none;"><a href="/registro/" ><h3 style="color: #f6f6f8;">REGISTRAR CARGA</h3></a></li>
+				
+					<li style="list-style-type: none;"><a href="/registroTar/" ><h3 style="color: #f6f6f8;">REGISTRAR TARIMAS</h3></a></li>					
+					
 				
 				</ul>					
 			</div> 
@@ -46,12 +46,12 @@
 
                                 <table class="table table-bordered">
                                 <thead>
-                                  <tr>
+                                  <tr>                                    
                                     <th>CLIENTE</th>
                                     <th>FECHA DE REGISTRO</th>
                                     <th>HORA</th>
                                     <th>OPCIONES</th>
-                                    <th>CREAR</th>
+                                    <!--<th>CREAR</th>-->
                                     <!--<th>IMAGEN</th>-->
                                   </tr>
                                 </thead>
@@ -64,9 +64,9 @@
                                     <td>
                                         <a href="{% url 'editarCarga' contenido.id %}" >EDITAR</a>
                                     </td>
-                                    <td>
+                                    <!--<td>
                                       <a href="{% url 'exportar_cargas_pdf' contenido.id %}">PDF</a>
-                                    <!--</td>
+                                    </td>
                                     <td><img src="../media/{{ contenido.visual_paredes }}" alt="Mi imagen" width="50"></td>
                                   </tr>-->
                                   {% endfor %}

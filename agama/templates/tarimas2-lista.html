@@ -19,12 +19,7 @@
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
 				<ul>
 					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}" ><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
-					<li style="list-style-type: none;"><a href="/registro/" ><h3 style="color: #f6f6f8;">REGISTRAR CARGA</h3></a></li>	
-					<li style="list-style-type: none;"><a href="/registroTar/" ><h3 style="color: #f6f6f8;">REGISTRAR TARIMAS</h3></a></li>					
-					<li style="list-style-type: none;"><a href="/registroClien/" ><h3 style="color: #f6f6f8;">REGISTRAR CLIENTE</h3></a></li>
-					<li style="list-style-type: none;"><a href="/cliente/" ><h3 style="color: #f6f6f8;">LISTA DE CLIENTES</h3></a></li>
-					<li style="list-style-type: none;"><a href="/cargas/" ><h3 style="color: #f6f6f8;">LISTA DE CARGAS</h3></a></li>
-					<li style="list-style-type: none;"><a href="/listarTarima/" ><h3 style="color: #f6f6f8;">LISTA DE TARIMAS</h3></a></li>
+				
 				
 				</ul>					
 			</div> 
@@ -38,7 +33,7 @@
                    
                     <br>
                     <div class="col-12"  style="background-color: rgb(240, 23, 77);align-items:center;display:flex;justify-content:center;">                               	
-                        <hi>LISTA DE CLIENTES</hi>				
+                        <hi>LISTA DE TARIMAS</hi>				
                     </div>
                     <br>
                     <br>                           
@@ -51,25 +46,20 @@
                                 <table class="table table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>CLIENTE</th>
-                                    <th>DIRECCION</th>
-                                    <th>CONTACTO</th>
-                                    <th>EDITAR</th>
-                                    <th>ELIMINAR</th>
-                                    <!--<th>IMAGEN</th>-->
+                                    
+                                    <th>TARIMA</th>
+                                    <th>PRODUCTO</th>                                    
+                                                                      
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {% for cliente in clientes %}
+                                  {% for Tarima in Tarimas2%}
                                   <tr>
-                                    <td>{{ cliente.nombre_cliente }}</td>
-                                    <td>{{ cliente.direccion_fiscal }}</td>
-                                    <td>{{ cliente.contacto_dir}}</td>
-                                    <td>
-                                        <a href="{% url 'editarCliente' cliente.id %}" >EDITAR</a>
-                                    </td>
-                                    <td>
-                                      <a href="{% url 'eliminarCliente' cliente.id %}">ELIMINAR</a>
+                                    
+                                    <td>{{ Tarima.numero_tarima }}</td>
+                                    <td>{{ Tarima.producto_tarima }}</td>
+                                    
+                                    
                                     <!--</td>
                                     <td><img src="../media/{{ contenido.visual_paredes }}" alt="Mi imagen" width="50"></td>
                                   </tr>-->
@@ -90,7 +80,7 @@
                    
                         
                     
-                    {{mensaje}}
+                  
                     
                 
                 </div>
