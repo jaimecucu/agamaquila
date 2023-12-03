@@ -25,7 +25,7 @@ from reportlab.lib.units import cm
 #direccion local
 #imagen_media12="C:/Users/uzzie/Desktop/proyecto-D3/maquilas/maquilas/media/"
 #direccion produccion
-imagen_media12="/maquilas/maquilas/media/"
+imagen_media12="MEDIA_URL"
 
 
 
@@ -391,6 +391,7 @@ def eliminarCarga2(request,id):
         imagen7= contenido.visual_cerrado_unidad
 
     ruta_imagen1 =imagen_media12+ str(imagen1)
+    print(ruta_imagen1)
     ruta_imagen2 =imagen_media12+ str(imagen2)
     ruta_imagen3 =imagen_media12+ str(imagen3)
     ruta_imagen4 =imagen_media12+ str(imagen4)
