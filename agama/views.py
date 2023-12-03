@@ -428,13 +428,13 @@ def editarCarga(request,id):
     imagen6= edit_carga.visual_fin_carga
     imagen7= edit_carga.visual_cerrado_unidad
 
-    ruta_imagen1 =imagen_media12+ str(imagen1)    
-    ruta_imagen2 =imagen_media12+ str(imagen2)
-    ruta_imagen3 =imagen_media12+ str(imagen3)
-    ruta_imagen4 =imagen_media12+ str(imagen4)
-    ruta_imagen5 =imagen_media12+ str(imagen5)
-    ruta_imagen6 =imagen_media12+ str(imagen6)
-    ruta_imagen7 =imagen_media12+ str(imagen7)
+    ruta_imagen1 =str(imagen1)    
+    ruta_imagen2 =str(imagen2)
+    ruta_imagen3 =str(imagen3)
+    ruta_imagen4 =str(imagen4)
+    ruta_imagen5 =str(imagen5)
+    ruta_imagen6 =str(imagen6)
+    ruta_imagen7 =str(imagen7)
     
     if request.method=='GET':
 
@@ -456,13 +456,13 @@ def editarCarga(request,id):
         imagen66= edit_carga.visual_fin_carga
         imagen77= edit_carga.visual_cerrado_unidad
 
-        ruta_imagen11 =imagen_media12+ str(imagen11)        
-        ruta_imagen22 =imagen_media12+ str(imagen22)
-        ruta_imagen33 =imagen_media12+ str(imagen33)
-        ruta_imagen44 =imagen_media12+ str(imagen44)
-        ruta_imagen55 =imagen_media12+ str(imagen55)
-        ruta_imagen66 =imagen_media12+ str(imagen66)
-        ruta_imagen77 =imagen_media12+ str(imagen77)
+        ruta_imagen11 = str(imagen11)        
+        ruta_imagen22 =str(imagen22)
+        ruta_imagen33 =str(imagen33)
+        ruta_imagen44 =str(imagen44)
+        ruta_imagen55 =str(imagen55)
+        ruta_imagen66 =str(imagen66)
+        ruta_imagen77 =str(imagen77)
         import os
         if ruta_imagen1 !=ruta_imagen11:
             os.remove(ruta_imagen1)
