@@ -25,6 +25,10 @@ urlpatterns = [
     path('limpiarT/',views.limpiarTabla, name='limpiarT'),
     path('salida/',views.registro_salida, name='salida'),
     path('eliminarcargas2/<int:id>',views.eliminarCarga2, name='eliminarcargas2'), 
+    path('finalizar/', views.registro_finalizar, name='finalizar'), 
+    path('datosanteriores/', views.datos_anteriores, name='datosanteriores'),
+
+    
     
     
 ]

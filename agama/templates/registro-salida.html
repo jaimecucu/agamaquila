@@ -18,9 +18,8 @@
             
 		
 			<div class="col-3" style="background-color: rgb(78, 77, 77);align-items:center;display:flex;justify-content:center;  height: 100vh;">
-				<ul>
-					<li style="list-style-type: none;"><a href="{% url 'menuaga' %}"><h3 style="color: #f6f6f8;">INICIO</h3></a></li>
-					
+				<ul>					
+                    <li style="list-style-type: none;"><a href="/registroTar/" ><h3 style="color: #f6f6f8;">REGISTRAR TARIMAS</h3></a></li>					
 				</ul>					
 			</div> 
 
@@ -44,6 +43,31 @@
                         <div class="col-12"  style="background-color: rgb(240, 23, 77);align-items:center;display:flex;justify-content:center;">                               	
                             <hi>SALIDAS</hi>				
                         </div>
+                        {% if messages  %}
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                       
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% elif message.tags == 'error' %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endif %}
+                           
+                          
+                        {% endfor %}
+                        
+                          
+                        {% endif %}
+                      
+                       
+                    
+                      
+                        <br>
                       
                     
                       
@@ -52,24 +76,92 @@
                             <hi>REGISTRAR SALIDA</hi>				
                         </div>
                         <br>
-                        <div class="col-12">
-                                            
-                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
-                            <div>{% csrf_token %}{{ form.hora_fin_carga }}</div>
+                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
+                            <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
+                        </div>
+                        <br>
+                        <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">							
+                        
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_tarima1.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_tarima1 }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_tarima1.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    
+                            </div>	
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_mitad_carga.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_mitad_carga }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_mitad_carga.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    
+                            </div>
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_fin_carga.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_fin_carga.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>                                   	
+                            </div>                           										
+                        </div>
+                        <br>
+                        <br>
+
+                        
+                        <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">
+                            <div></div>
+                            
+                            <div>
+                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad.label }}</div>
+                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>
+                                <div>
+                                    <img src="../media/{{ form.visual_cerrado_unidad.value }}" alt="Mi imagen" width="200" height="200" >
+                                </div>    	
+                            </div>
+                            <div></div>
+                            	
+                        </div>	                       
+                        <br>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                            
+                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>							
                             <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
-                            <div>{% csrf_token %}{{ form.hora_salida }}</div>
-                           
-                            <br>
-                        </div>                  					
-                                    
-                       
+                
+                        </div>
+                        <div style="align-items:center;display:flex;justify-content: space-between;">
+                            
+                            
+                            <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>					
+                            <div>{% csrf_token %}{{ form.hora_salida}}</div>
+                
+                        </div>								
+                        
+                        <br>
                         <div style="align-items:center;display:flex;justify-content:center;">
-                            <button type="submit" id="btnEnviar" class="btn btn-primary">TERMINAR REGISTRO</button>
+                            <button type="submit" id="btnEnviar" class="btn btn-primary">GUARDAR</button>
                         </div>
                     </form>	
-                                   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div style="align-items:center;display:flex;justify-content:center;">
+                        <a href="{% url 'finalizar' %}">FINALIZAR REGISTRO</a>
+                    
+                    </div>
+                   
+                    <br>
+                    <br>
+                    <br>
+                    <div style="align-items:center;display:flex;justify-content:center;">
+                        <a href="{% url 'limpiarT' %}">CANCELAR REGISTRO</a>
+                    
+                    </div>                                  
                 
                 </div>
+                
 			</div> 
 		</div>
 						

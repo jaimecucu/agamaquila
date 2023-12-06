@@ -10,7 +10,7 @@ from reportlab.lib import utils
 from reportlab.platypus import SimpleDocTemplate, Table,TableStyle
 from  django.templatetags.static import  static
 import subprocess
-from .forms import contenidoForm,clientesForm,TarimaForm,contenido_terminarForm#,transporteForm,transporte1Form,productoForm,producto1Form,visualForm,visual1Form,visual_productoForm,visual_producto1Form
+from .forms import contenidoForm,clientesForm,TarimaForm,contenido_terminarForm,contenidoeeForm#,transporteForm,transporte1Form,productoForm,producto1Form,visualForm,visual1Form,visual_productoForm,visual_producto1Form
 from .models import contenido,cliente,Tarima,contenido2,Tarima2
 from django.conf import settings
 import  os
@@ -28,13 +28,6 @@ from reportlab.lib.units import cm
 imagen_media12="/app/maquilas/media/"
 
 
-
-
-
-
-
-#from django.template.loader import render_to_string
-# Create your views here.
 
 def menuaga(request):  
     return render(request,'base.html')
@@ -170,6 +163,42 @@ def registroTarima(request):
                     
     return render(request,'registro-tarima.html',data)
 
+def registro_finalizar(request):
+    
+  
+  
+    # Obtienes los datos de la primera tabla
+    datos = contenido.objects.all()
+    # Los conviertes en una lista de objetos de la segunda tabla
+    nuevos_datos = [contenido2(**{k: v for k, v in dato.__dict__.items() if k != '_state'}) for dato in datos]
+    # Los insertas en la segunda tabla
+    contenido2.objects.bulk_create(nuevos_datos)
+    # Borras los datos de la primera tabla
+    contenido.objects.all().delete()
+    # Obtener los datos del modelo tarima
+    datos_tarima = Tarima.objects.values()
+
+    # Obtener el id del último registro del modelo contenido2
+    id_contenido2 = contenido2.objects.last().id
+
+    # Crear una lista vacía para almacenar las nuevas instancias de tarima2
+    nuevas_tarimas = []
+
+    # Iterar sobre los datos de tarima y agregar el id de contenido2
+    for dato2 in datos_tarima:
+
+        dato2['contenido2_id'] = id_contenido2
+        # Crear una nueva instancia de tarima2 con el dato combinado
+        nueva_tarima = Tarima2(**dato2)
+        # Agregar la nueva instancia a la lista
+        nuevas_tarimas.append(nueva_tarima)
+
+    # Guardar las nuevas instancias de tarima2 en la base de datos
+    Tarima2.objects.bulk_create(nuevas_tarimas)
+    Tarima.objects.all().delete()
+    return redirect('embarque')
+    
+
 
 
 
@@ -183,69 +212,53 @@ def registro_salida(request):
     if request.method == 'POST':
         
         unidad = contenido.objects.last()
-        contenido_form = contenido_terminarForm(request.POST.copy(), instance=unidad) # Creamos el formulario con los datos del objeto
+        contenido_form = contenido_terminarForm(request.POST,request.FILES.copy(), instance=unidad) # Creamos el formulario con los datos del objeto
            
 
           
     
         if contenido_form.is_valid(): # Validamos el formulario
-            contenido_form.save() # Guardamos los cambios en el objeto
-             # Obtienes los datos de la primera tabla
-            datos = contenido.objects.all()
-            # Los conviertes en una lista de objetos de la segunda tabla
-            nuevos_datos = [contenido2(**{k: v for k, v in dato.__dict__.items() if k != '_state'}) for dato in datos]
-            # Los insertas en la segunda tabla
-            contenido2.objects.bulk_create(nuevos_datos)
-            # Borras los datos de la primera tabla
-            contenido.objects.all().delete()
-            # Obtener los datos del modelo tarima
-            datos_tarima = Tarima.objects.values()
-
-            # Obtener el id del último registro del modelo contenido2
-            id_contenido2 = contenido2.objects.last().id
-
-            # Crear una lista vacía para almacenar las nuevas instancias de tarima2
-            nuevas_tarimas = []
-
-            # Iterar sobre los datos de tarima y agregar el id de contenido2
-            for dato2 in datos_tarima:
-
-                dato2['contenido2_id'] = id_contenido2
-                # Crear una nueva instancia de tarima2 con el dato combinado
-                nueva_tarima = Tarima2(**dato2)
-                # Agregar la nueva instancia a la lista
-                nuevas_tarimas.append(nueva_tarima)
-
-            # Guardar las nuevas instancias de tarima2 en la base de datos
-            Tarima2.objects.bulk_create(nuevas_tarimas)
-            Tarima.objects.all().delete()
-            return redirect('embarque') # Redirigimos a la lista de unidades   
+            contenido_form.save() # Guardamos los cambios en el objeto------------------------------------------------------------------------------------------------------
+            messages.success(request, "Operacion exitosa.") 
+           
+            return render(request,'registro-salida.html',data)    
     return render(request,'registro-salida.html',data)
 
+def datos_anteriores(request):
+    data = {
+        'form':TarimaForm()
+        
+    }
+    if request.method=='GET':
+        data['num_tarimas'] = Tarima.objects.count() # obtiene el número de registros de Tarima
+        print(data)
 
-
-
-
-
-
-
+        # Obtener la última instancia de la tarima
+        ultima_tarima = Tarima.objects.last()
+        # Crear el formulario con la instancia de la tarima
+        tarima_form = TarimaForm(instance=ultima_tarima)
+        # Renderizar el template con el formulario
+        return render(request, "registro-tarima.html", {"form": tarima_form,"data": data})
+        
     
+    elif request.method == 'POST':
+
+        tarima_form=TarimaForm(request.POST)
+        
+        
+        
+
+        if tarima_form.is_valid():
+            tarima_form.save()
+            data['data.num_tarimas'] = Tarima.objects.count() # obtiene el número de registros de Tarima
+            print(data)
+            
+            return render(request,'registro-tarima.html',data)
 
 
 
+         
     
-    
-     
-    
-    
-
-   
-
-
-    
-
-
-
 
 
 def embarque(request):
@@ -259,7 +272,7 @@ def embarque(request):
     if request.method == 'POST':
 
         contenido_form=contenidoForm(request.POST,request.FILES)
-        print(contenido_form)
+        
 
         if contenido_form.is_valid():
             contenido_form.save()
@@ -283,11 +296,6 @@ def listarTarimas(request):
 def listarTarimas2(request):     
     Tarimas= Tarima2.objects.all().order_by('-id')[:30]    
     return render(request,'tarimas2-lista.html',{'Tarimas2': Tarimas})
-
-
-
-
-
 
 def consulta_clientes(request):
     termino = request.GET.get('name', '')
@@ -322,7 +330,6 @@ def consulta_cliente(request):
   data_json = json.dumps(data)
   # Devolver la cadena JSON como respuesta
   return HttpResponse(data_json, content_type="application/json")
-
 
 
 def editarCliente(request,id):
@@ -434,10 +441,10 @@ def editarCarga(request,id):
     
     if request.method=='GET':
 
-        contenido_form =contenidoForm(instance= edit_carga) 
+        contenido_form =contenidoeeForm(instance= edit_carga) 
              
     else:
-        contenido_form=contenidoForm(request.POST,request.FILES,instance=edit_carga)
+        contenido_form=contenidoeeForm(request.POST,request.FILES,instance=edit_carga)
 
         if contenido_form.is_valid():
             contenido_form.save() 
@@ -624,13 +631,13 @@ def exportar_cargas_pdf(request,id):
     #condiciones visuales del producto de entrega
     c.drawString(200, 324, "Condiciones visuales del producto de entrga")
     c.drawString(60, 200, "(Primer tarima)")
-    c.drawImage(cargas.visual_paredes.path, 30, 215, width=100, height=100)
+    c.drawImage(cargas.visual_tarima1.path, 30, 215, width=100, height=100)
     c.drawString(180, 200, "(Mitad de carga)")
-    c.drawImage(cargas.visual_piso.path, 165, 215, width=100, height=100)
+    c.drawImage(cargas.visual_mitad_carga.path, 165, 215, width=100, height=100)
     c.drawString(330, 200, "(Fin de carga)")
-    c.drawImage(cargas.visual_techo.path, 300, 215, width=100, height=100)
+    c.drawImage(cargas.visual_fin_carga.path, 300, 215, width=100, height=100)
     c.drawString(450, 200, "(Cerrado de la unidad)")
-    c.drawImage(cargas.visual_techo.path, 435, 215, width=100, height=100)
+    c.drawImage(cargas.visual_cerrado_unidad.path, 435, 215, width=100, height=100)
     c.drawString(40, 180, "Hora finde carga:")
     c.drawString(150, 180, cargas.hora_fin_carga)
     c.drawString(270, 180, "Hora de salida:")

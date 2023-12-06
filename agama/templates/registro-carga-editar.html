@@ -299,20 +299,22 @@
                         																	
                         </div>
                         <br>
+                        <br>
+                        <br>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
-                
+                            
                             <div>{% csrf_token %}{{ form.hora_llegada.label }}</div>							
-                            <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>
                 
                         </div>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
                             
                             
                             <div>{% csrf_token %}{{ form.hora_llegada }}</div>					
-                            <div>{% csrf_token %}{{ form.hora_salida }}</div>
+                            <div>{% csrf_token %}{{ form.hora_inicio_carga}}</div>
                 
                         </div>
-                        <br>			
+                        <br>
                         <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
                             <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
                         </div>
@@ -357,51 +359,29 @@
                             </div>
                             <div></div>
                             	
-                        </div>	
-
-
-
-                        
-
-                        	
+                        </div>	                       
                         <br>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
-                
-                            <div>{% csrf_token %}{{ form.hora_inicio_carga.label }}</div>							
-                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>
+                            
+                            <div>{% csrf_token %}{{ form.hora_fin_carga.label }}</div>							
+                            <div>{% csrf_token %}{{ form.hora_salida.label }}</div>
                 
                         </div>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
                             
                             
-                            <div>{% csrf_token %}{{ form.hora_inicio_carga }}</div>					
-                            <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>
+                            <div>{% csrf_token %}{{ form.hora_fin_carga}}</div>					
+                            <div>{% csrf_token %}{{ form.hora_salida}}</div>
                 
                         </div>								
+                        
+                        <br>								
                         </div>
                         <br>
                         <div style="align-items:center;display:flex;justify-content:center;">
                             <button type="submit" id="btnEnviar" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
-                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
                     <div class="container py-4">
 
                         <div class="modal fade" id="cliente-modal"  aria-labelledby="modal" data-backdrop="static">

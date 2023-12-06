@@ -26,6 +26,7 @@
 					
 					<li style="list-style-type: none;"><a href="/cargas/" ><h3 style="color: #f6f6f8;">LISTA DE CARGAS</h3></a></li>
 					<li style="list-style-type: none;"><a href="/listarTarima/" ><h3 style="color: #f6f6f8;">LISTA DE TARIMAS</h3></a></li>
+                    <li style="list-style-type: none;"><a href="/salida/" ><h3 style="color: #f6f6f8;">SALIDA</h3></a></li>
 				</ul>					
 			</div> 
 
@@ -50,7 +51,7 @@
                             <br>
 
                             <div>                                
-                                <label>TARIMAS REGISTRADAS:  {{ num_tarimas }}</label> 
+                                <label>TARIMAS REGISTRADAS:  {{ data.num_tarimas }}</label> 
                             </div>
                             <br>
                     
@@ -127,6 +128,11 @@
                     </form>	
                     <br>
                     <br>
+                    <div style="align-items:center;display:flex;justify-content:center;">
+                        <a href="{% url 'datosanteriores' %}">TRAER DATOS ANTERIORES</a>
+                        
+                    
+                    </div>
                     <br>
                     <br>
                     <br>

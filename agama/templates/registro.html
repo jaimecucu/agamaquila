@@ -300,53 +300,7 @@
                         </div>
                         <br>
                       
-                        <br>			
-                        <div class="col-12"  style="background-color: rgb(189, 189, 194);align-items:center;display:flex;justify-content:center;">
-                            <hi>CONDICIONES VISUALES DEL PRODUCTO DE ENTREGA</hi>											
-                        </div>
-                        <br>
-                        <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">							
-                        
-                            <div>
-                                <div>{% csrf_token %}{{ form.visual_tarima1.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_tarima1 }}</div>
-                                <div>
-                                    <img src="../media/{{ form.visual_tarima1.value }}" alt="Mi imagen" width="200" height="200" >
-                                </div>    
-                            </div>	
-                            <div>
-                                <div>{% csrf_token %}{{ form.visual_mitad_carga.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_mitad_carga }}</div>
-                                <div>
-                                    <img src="../media/{{ form.visual_mitad_carga.value }}" alt="Mi imagen" width="200" height="200" >
-                                </div>    
-                            </div>
-                            <div>
-                                <div>{% csrf_token %}{{ form.visual_fin_carga.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_fin_carga }}</div>
-                                <div>
-                                    <img src="../media/{{ form.visual_fin_carga.value }}" alt="Mi imagen" width="200" height="200" >
-                                </div>                                   	
-                            </div>                           										
-                        </div>
-                        <br>
-                        <br>
-
-                        
-                        <div style="align-items:center;display:flex;justify-content:center;justify-content: space-between;">
-                            <div></div>
-                            
-                            <div>
-                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad.label }}</div>
-                                <div>{% csrf_token %}{{ form.visual_cerrado_unidad }}</div>
-                                <div>
-                                    <img src="../media/{{ form.visual_cerrado_unidad.value }}" alt="Mi imagen" width="200" height="200" >
-                                </div>    	
-                            </div>
-                            <div></div>
-                            	
-                        </div>	                       
-
+                       
                         	
                         <br>
                         <div style="align-items:center;display:flex;justify-content: space-between;">
