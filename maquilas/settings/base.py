@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-MX'
 
-TIME_ZONE = 'America/Mexico_City'
+TIME_ZONE = os.getenv('America/Mexico_City','UTC')
 
 USE_I18N = True
 
