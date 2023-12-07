@@ -2,6 +2,8 @@ from email import utils
 from io import BytesIO
 from mmap import PAGESIZE
 import reportlab
+from datetime import datetime
+from datetime import timedelta
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
@@ -497,8 +499,27 @@ def editarCarga(request,id):
 
 
 def exportar_cargas_pdf(request,id):
+   
+
+
+
+
+
     cargas = contenido2.objects.get(id=id)
     object_id = getattr(cargas, "id")
+
+    #ONTENIENDO HORA de la bse de datos y pasar a hora
+
+
+    fecha_hora = str(cargas.fecha_registro)+"    "+str(cargas.hora_registro)
+    now = datetime.strptime(fecha_hora, "%Y-%m-%d    %H:%M:%S.%f")
+    
+    six_hours = timedelta(hours=6)
+    new_time = now - six_hours
+    fecha = new_time.date()
+    hora = new_time.time()
+    formatted_time = new_time.strftime("%d/%m/%Y %H:%M")
+    
     
     
    # Usamos filter en vez de get para obtener un QuerySet
@@ -586,7 +607,7 @@ def exportar_cargas_pdf(request,id):
     c.setFont('Helvetica',8)    
     c.drawString(150, 795, "Departamento: Control de Calidad")
     c.drawString(35, 730, "Fecha de entrega:")
-    c.drawString(145, 730, cargas.fecha_registro.strftime("%d/%m/%Y")+"      "+hora_registro_str)
+    c.drawString(145, 730, str(fecha)+"      "+str(hora))
     c.drawString(300, 730, "Numero de reporte:")
     c.drawString(460, 730, str(object_id))
     #datos del cliente 
@@ -858,7 +879,7 @@ def exportar_cargas_pdf(request,id):
     c.drawString(140, 709, cargas.placas_caja)
 
     c.drawString(270, 629, "Fecha")
-    c.drawString(400, 629, cargas.fecha_registro.strftime("%d/%m/%Y")+"      "+hora_registro_str)
+    c.drawString(400, 629, formatted_time)
     #c.drawString(270, 649, "")
     #c.drawString(400, 649, cargas.placas_unidad)
     c.drawString(270, 669, "Tracto")
@@ -924,7 +945,7 @@ def exportar_cargas_pdf(request,id):
     c.drawString(35, 480, "Numero de embarque:" )
     c.drawString(200, 480, str(object_id))
     c.drawString(395, 480, "Fecha de embarque:")
-    c.drawString(605, 480, cargas.fecha_registro.strftime("%d/%m/%Y")+"      "+hora_registro_str)
+    c.drawString(605, 480, formatted_time)
     encabezados=["TARIMA", "PRODUCTO", "NUMERO DE LOTE ", "No. cama", "No. paquetes", "Lata", "Charolas", "Emplayado", "Observaciones"]
     data = [encabezados]+datos1
     
