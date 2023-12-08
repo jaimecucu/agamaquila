@@ -296,8 +296,20 @@ def listarTarimas(request):
     return render(request,'tarimas-lista.html',{'Tarimas': Tarimas})
 
 def listarTarimas2(request):     
-    Tarimas= Tarima2.objects.all().order_by('-id')[:30]    
+    Tarimas= Tarima2.objects.all().order_by('-id')[:10]    
     return render(request,'tarimas2-lista.html',{'Tarimas2': Tarimas})
+
+
+
+
+def buscar_Carga(request):
+    # Supongamos que quieres filtrar por el nombre del contenido
+    nombre = request.GET.get('nombre', '') # Obtiene el nombre del parámetro GET
+    if nombre: # Si el nombre no está vacío
+        cargas = contenido2.objects.filter(nombre__icontains=nombre).order_by('-id')[:5] # Filtra los objetos que contienen el nombre (ignorando mayúsculas y minúsculas) y los ordena por id descendente
+    else: # Si el nombre está vacío
+        cargas = contenido2.objects.all().order_by('-id')[:5] # Obtiene todos los objetos y los ordena por id descendente
+    # Aquí puedes hacer lo que quieras con las cargas, como renderizarlas en un template o devolverlas como JSON
 
 def consulta_clientes(request):
     termino = request.GET.get('name', '')
@@ -688,16 +700,16 @@ def exportar_cargas_pdf(request,id):
    
     
     c.setFont('Helvetica-Bold',8)
-    c.drawString(480, 795, "D-K-LL-AC-12")
+    c.drawString(480, 795, "E-F-CC-AC-03")
 
     
     c.drawString(480, 780, "Revision 01")
 
     
-    c.drawString(480, 765, "18-OCT-21")
+    c.drawString(480, 765, "30-sep-17")
 
     
-    c.drawString(480, 750, "Pagina 1-1") 
+    c.drawString(480, 750, "Pagina 2,4") 
 
 #segunda hoja---------------------------------------------------------------------------------------
     c.showPage()
@@ -895,16 +907,16 @@ def exportar_cargas_pdf(request,id):
    
     
     c.setFont('Helvetica-Bold',8)
-    c.drawString(480, 795, "D-K-LL-AC-12")
+    c.drawString(480, 795, "E-F-CC-AC-03")
 
     
-    c.drawString(480, 780, "Revision 01")
+    c.drawString(480, 780, "Revision 00")
 
     
-    c.drawString(480, 765, "18-OCT-21")
+    c.drawString(480, 765, "30-sep-17")
 
     
-    c.drawString(480, 750, "Pagina 1-1") 
+    c.drawString(480, 750, "Pagina 3,4") 
 
     #TERCERA PAGINA-----------------------------------------------------------------------------------------------------------------------
     
@@ -928,10 +940,10 @@ def exportar_cargas_pdf(request,id):
 
     c.setFont('Helvetica-Bold',8)
     c.drawString(150, 565, "Departamento: Control de Calidad")
-    c.drawString(725, 565, "D-K-LL-AC-12")    
-    c.drawString(725, 545, "Revision 01")    
-    c.drawString(725, 525, "18-OCT-21")    
-    c.drawString(725, 505, "Pagina 1-1") 
+    c.drawString(725, 565, "E-F-CC-AC-03")    
+    c.drawString(725, 545, "Revision 00")    
+    c.drawString(725, 525, "30-sep-17")    
+    c.drawString(725, 505, "Pagina 4,4") 
     c.setFont('Helvetica-Bold',10)    
     c.drawString(290, 545, "Inspeccion y liberacion de entrega de producto de maquila")
 

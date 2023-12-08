@@ -46,10 +46,9 @@
                                 <table class="table table-bordered">
                                 <thead>
                                   <tr>
-                                    
+                                    <th>ID</th>
                                     <th>CLIENTE</th>
-                                    <th>FECHA DE REGISTRO</th>
-                                    <th>HORA</th>
+                                    <th>FECHA DE REGISTRO</th>                                    
                                     <th>OPCIONES</th>
                                     <th>CREAR</th>
                                   
@@ -59,10 +58,9 @@
                                 <tbody>
                                   {% for contenido2 in cargas %}
                                   <tr>
-                                    
+                                    <td>{{ contenido2.id }}</td>
                                     <td>{{ contenido2.nombre_cliente }}</td>
-                                    <td>{{ contenido2.fecha_registro }}</td>
-                                    <td>{{ contenido2.hora_registro }}</td>
+                                    <td>{{ contenido2.fecha_registro }}</td>                                    
                                     <td>
                                         <a href="{% url 'eliminarcargas2' contenido2.id %}" >ELIMINAR</a>
                                     </td>
