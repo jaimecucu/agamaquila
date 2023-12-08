@@ -958,7 +958,7 @@ def exportar_cargas_pdf(request,id):
     c.drawString(200, 480, str(object_id))
     c.drawString(395, 480, "Fecha de embarque:")
     c.drawString(605, 480, formatted_time)
-    encabezados=["TARIMA", "PRODUCTO", "NUMERO DE LOTE ", "No. cama", "No. paquetes", "Lata", "Charolas", "Emplayado", "Observaciones"]
+    encabezados=["TARIMA", "PRODUCTO", "NUMERO DE LOTE ", "No. cama", "No. paquetes", "Lata cumple", "Charolas cumple", "Emplayado cumple", "Observaciones"]
     data = [encabezados]+datos1
     
 
@@ -977,7 +977,7 @@ def exportar_cargas_pdf(request,id):
     # Alineación del texto al centro
     ("ALIGN", (0, 0), (-1, -1), "CENTER"),
     # Tamaño de la fuente de la primera fila
-    ("FONTSIZE", (0, 0), (-1, 0), 7),
+    ("FONTSIZE", (0, 0), (-1, 0), 6),
     # Tamaño de la fuente del resto de celdas
     ("FONTSIZE", (0, 1), (-1, -1), 7),
     # Alineación vertical del texto en la parte de abajo
