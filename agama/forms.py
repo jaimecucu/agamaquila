@@ -246,9 +246,9 @@ class TarimaForm(forms.ModelForm):
             'producto_tarima': forms.TextInput(attrs={'class':'form-control'}),
             'camas_tarima': forms.NumberInput(attrs={'class':'form-control'}),
             'paquetes_tarima': forms.NumberInput(attrs={'class':'form-control'}),            
-            'latas_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
-            'charolas_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
-            'emplayado_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
+            'latas_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
+            'charolas_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
+            'emplayado_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
             'observaciones_tarima': forms.TextInput(attrs={'class':'form-control'}),
             
 
@@ -445,9 +445,9 @@ class Tarima2Form(forms.ModelForm):
             'producto_tarima': forms.TextInput(attrs={'class':'form-control'}),
             'camas_tarima': forms.NumberInput(attrs={'class':'form-control'}),
             'paquetes_tarima': forms.NumberInput(attrs={'class':'form-control'}),            
-            'latas_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
-            'charolas_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
-            'emplayado_tarima': forms.Select(choices=[('A', 'SI'), ('B', 'NO')]),
+            'latas_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
+            'charolas_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
+            'emplayado_tarima': forms.Select(choices=[('SI', 'SI'), ('NO', 'NO')]),
             'observaciones_tarima': forms.TextInput(attrs={'class':'form-control'}),
             
 }
